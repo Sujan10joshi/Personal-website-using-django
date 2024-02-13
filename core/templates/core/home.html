@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujan Joshi</title>
+    <link rel="stylesheet" href="{% static "core/css/all.css" %}">
+    <link rel="stylesheet" href="{% static "core/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "core/css/style.css" %}">
+</head>
+<body>
+    {% include "core/landing.html" %}
+	{% include "core/about.html" %}
+	{% include "core/services.html" %}
+	{% include "core/portfolio.html" %}
+	{% include "core/contact.html" %}
+
+
+	<script>
+
+		var tablinks = document.getElementsByClassName("tab-links");
+		var tabcontents = document.getElementsByClassName("tab-contents");
+
+		function opentab(tabname) {
+			for (tablink of tablinks) {
+				tablink.classList.remove("active-link");
+			}
+			for (tabcontent of tabcontents) {
+				tabcontent.classList.remove("active-tab");
+			}
+			event.currentTarget.classList.add("active-link");
+			document.getElementById(tabname).classList.add("active-tab");
+		}
+	</script>
+
+	<script>
+
+		var sidemenu = document.getElementById("sidemenu");
+
+		function openmenu() {
+			sidemenu.style.right = "0";
+		}
+		function closemenu() {
+			sidemenu.style.right = "-200px";
+		}
+	</script>
+	<script>
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbzZDvRMO-5yCUbjE1raRfEou1CAvzk90WU4u0L-8JVmVg-lcy166tSg4X5gvMR-bTeblQ/exec'
+		const form = document.forms['submit-to-google-sheet']
+		const msg = document.getElementById("msg")
+
+		form.addEventListener('submit', e => {
+			e.preventDefault()
+			fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+				.then(response => {
+					msg.innerHTML = "Message sent successfully"
+					setTimeout(function () {
+						msg.innerHTML = ""
+					}, 5000)
+					form.reset()
+				})
+				.catch(error => console.error('Error!', error.message))
+		})
+	</script>
+	
+    <script src="{% static "core/js/jquery.js" %}"></script>
+    <script src="{% static "core/js/popper.js" %}"></script>
+    <script src="{% static "core/js/all.js" %}"></script>
+    <script src="{% static "core/js/bootstrap.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="{% static "core/images/user.jpg" %}">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-tittle">About Me</h1>
+                <p>Hey Guys! This me Sujan Joshi. I am your new website Developer. My mission is to help small and
+                    medium-sized businesses grow their audience and brand recognition through Website. My goal is to
+                    help you understand the power of Website and create connections that go beyond the internet.</p>
+
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('Skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('Experiences')">Experineces</p>
+                    <p class="tab-links" onclick="opentab('Education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="Skills">
+                    <ul>
+                        <li><span>UI/UX</span><br>Designing Web/App Interfaces</li>
+                        <li><span>Website Development</span><br> Web App Development</li>
+                        <li><span>Web Hosting and Domain Name</span><br>Building Hosting and Domain</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="Experiences">
+                    <ul>
+                        <li><span>2022 - Current</span><br>UI/UX Design Training at IT Insitute</li>
+                        <li><span>Work with Cilents</span><br> I have been in website development industry form past
+                            1 years and have worked with more than ten clients across the country.</li>
+                        <li><span>2020 - 2021</span><br>Appointed as a Opearting Manager Of IT services</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="Education">
+                    <ul>
+                        <li><span>2014</span><br>SLC from Shree Bhairabkali Higher Secondary School</li>
+                        <li><span>2016</span><br>+2 from National School of Science</li>
+                        <li><span>2020</span><br>Bachelor in Computer Science and Information Technology (CSIT) from
+                            Asian School of Management and Technology</li>
+                    </ul>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
