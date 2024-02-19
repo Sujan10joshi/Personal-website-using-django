@@ -1,3 +1,6 @@
+{% extends "core/home.html" %}
+{% block contactone %}
+{% load static %}
 <div id="contact">
     <div class="container">
         <div class="row">
@@ -13,16 +16,22 @@
                             class="fa-brands fa-instagram"></i></a>
                     <a href=""><i class="fa-brands fa-twitter-square"></i></a>
                 </div>
-                <a href="images/my-cv.pdf" download class="btn btn2">Download Cv</a>
+                <a href="{% static "core/files/sujan-cv.pdf" %}" download class="btn btn2">Download Cv</a>
             </div>
             <div class="contact-Right">
-                <form name="submit-to-google-sheet">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="Email" name="E-mail" placeholder="Your E-mail" required>
-                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                            {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}
+                                    <p>{{error}}</p>
+                                {% endfor %}
+                            {% endif %}
+    
+                            {% for fm in form %}
+                                {{fm}}  {{fm.errors|striptags}}
+                            {% endfor %}
+                            <button type="submit" class="btn btn2">Submit</button>
                 </form>
-                <span id="msg"></span>
             </div>
         </div>
     </div>
@@ -30,3 +39,4 @@
         <p>Copyright @ Sujan Joshi <i class="fa-solid fa-heart"></i> - 2023</p>
     </div>
 </div>
+{% endblock contactone %}

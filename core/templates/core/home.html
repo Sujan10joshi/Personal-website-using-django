@@ -14,7 +14,46 @@
 	{% include "core/about.html" %}
 	{% include "core/services.html" %}
 	{% include "core/portfolio.html" %}
-	{% include "core/contact.html" %}
+	
+	<!--Contact-->
+	<div id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="contact-left">
+					<h1 class="sub-title">Contact Me</h1>
+					<p><i class="fa-solid fa-paper-plane"></i> suzan7zoc@gmail.com</p>
+					<p><i class="fa-regular fa-mobile"></i>9817112273</p>
+					<div class="social-icons">
+						<a href="https://www.facebook.com/profile.php?id=100082736012738"><i
+								class="fa-brands fa-facebook"></i></a>
+						<a
+							href="https://l.facebook.com/l.php?u=https%3A%2F%2Finstagram.com%2Fdi.pesh4115%3Figshid%3DYmMyMTA2M2Y%253D%26fbclid%3DIwAR0ZARm0mO1vTlgUSvVkoLpf2bGlR3AQ6rCNOImuupVWq_-OCKmr2X8gy0w&h=AT0WXWG9d1A4SSeUlfSiD6qmU8HxMf_gSy7lUU10EAfSa14kCYyMj1HoUq7asQHJf9eEZ0SeDUsGrv9TOvyUEVrBAhxu1yH6K5wP8H8BmL4AbeG15CBgY-9nueBTCiNJN5P8_A"><i
+								class="fa-brands fa-instagram"></i></a>
+						<a href=""><i class="fa-brands fa-twitter-square"></i></a>
+					</div>
+					<a href="{% static "core/files/sujan-cv.pdf" %}" download class="btn btn2">Download Cv</a>
+				</div>
+				<div class="contact-Right">
+					<form method="POST" novalidate>
+						{% csrf_token %}
+								{% if form.non_field_errors %}
+									{% for error in form.non_field_errors %}
+										<p>{{error}}</p>
+									{% endfor %}
+								{% endif %}
+		
+								{% for fm in form %}
+									{{fm}}  {{fm.errors|striptags}}
+								{% endfor %}
+								<button type="submit" class="btn btn2">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<p>Copyright @ Sujan Joshi <i class="fa-solid fa-heart"></i> <br> {{date|date}}</p>
+		</div>
+	</div>
 
 
 	<script>
@@ -44,24 +83,6 @@
 		function closemenu() {
 			sidemenu.style.right = "-200px";
 		}
-	</script>
-	<script>
-		const scriptURL = 'https://script.google.com/macros/s/AKfycbzZDvRMO-5yCUbjE1raRfEou1CAvzk90WU4u0L-8JVmVg-lcy166tSg4X5gvMR-bTeblQ/exec'
-		const form = document.forms['submit-to-google-sheet']
-		const msg = document.getElementById("msg")
-
-		form.addEventListener('submit', e => {
-			e.preventDefault()
-			fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-				.then(response => {
-					msg.innerHTML = "Message sent successfully"
-					setTimeout(function () {
-						msg.innerHTML = ""
-					}, 5000)
-					form.reset()
-				})
-				.catch(error => console.error('Error!', error.message))
-		})
 	</script>
 	
     <script src="{% static "core/js/jquery.js" %}"></script>
